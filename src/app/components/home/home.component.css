@@ -1,0 +1,55 @@
+.main_container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    padding : 20 px;
+}
+.container{
+    height: 80%;
+    width :50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding : 20 px;
+}
+
+.example-full-width{
+    width: 250px;
+}
+.form_container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form_item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+#enter{
+    width: 50%;
+}
+#password_input{
+    width: 50%;
+}
+#title{
+    font-size: 3.0em;
+    line-height: 1.2em;
+}
+.info_container{
+   
+    height :20%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}

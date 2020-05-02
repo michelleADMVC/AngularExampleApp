@@ -1,0 +1,11 @@
+<div class="container guide">
+    <mat-action-list>
+        <app-search></app-search>
+    </mat-action-list>
+    <div class="list_container guide">
+        <mat-action-list *ngFor="let item of items">
+            <button mat-list-item (click)="action()"> {{item.name_es}} </button>
+        </mat-action-list>
+    </div>
+</div>
+
