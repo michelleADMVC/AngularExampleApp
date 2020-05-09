@@ -1,0 +1,11 @@
+.panel{
+    display: flex;
+    height: 90%;
+    width: 100%;
+}
+.list{
+    width: 25%;
+}
+.visor{
+    width: 75%;
+}

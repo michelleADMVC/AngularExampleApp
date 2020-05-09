@@ -1,0 +1,88 @@
+<div class="container">
+    Crear item : {{builder}}
+    <div class="main">
+       
+        <ng-template [ngIf]="!builder">
+            <ng-template [ngIf]="empty">
+                <div>
+                    <h1>Vacio</h1>
+                </div>
+            </ng-template>
+            <ng-template  [ngIf]="!empty">
+                <div [ngSwitch]="mode">
+                     <div *ngSwitchCase="'cocktail'">
+                        {{mode}}
+                        <div class="name">
+                         {{globalObject.name_es}}
+                        </div>
+                        <div class="id">
+                         {{globalObject._id}}
+                        </div>
+                        <div class="id">
+                         {{globalObject.type}}
+                        </div>
+                     </div>
+                    <div *ngSwitchCase="'ingredient'">
+                        {{mode}}
+                       <div class="name">
+                        {{globalObject.name_es}}
+                       </div>
+                       <div class="id">
+                        {{globalObject._id}}
+                       </div>
+                       <div class="id">
+                        {{globalObject.type}}
+                       </div>
+                    </div>
+                    <div *ngSwitchCase="'tool'">
+                        {{mode}}
+                        <div class="name">
+                         {{globalObject.name_es}}
+                        </div>
+                        <div class="id">
+                         {{globalObject._id}}
+                        </div>
+                        <div class="id">
+                         {{globalObject.type}}
+                        </div>
+                     </div>
+                     <div *ngSwitchCase="'glass'">
+                        {{mode}}
+                        <div class="name">
+                         {{globalObject.name_es}}
+                        </div>
+                        <div class="id">
+                         {{globalObject._id}}
+                        </div>
+                        <div class="id">
+                         {{globalObject.type}}
+                        </div>
+                     </div>
+                </div>
+            </ng-template>
+        </ng-template>
+        <ng-template [ngIf]="builder">
+            <ng-template  [ngIf]="empty">
+                <div [ngSwitch]="mode">
+                     <div *ngSwitchCase="'cocktail'">
+                        {{mode}}
+                     </div>
+                    <div *ngSwitchCase="'ingredient'">
+                        {{mode}}
+                     
+                    </div>
+                    <div *ngSwitchCase="'tool'">
+                        {{mode}}
+                       
+                     </div>
+                     <div *ngSwitchCase="'glass'">
+                        {{mode}}
+                       
+                     </div>
+                </div>
+            </ng-template>
+        </ng-template>
+    </div>
+   
+    
+</div>

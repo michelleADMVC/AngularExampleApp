@@ -6,15 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public besos = 0;
   constructor() {
-
    }
   
-  beso(){
-    this.besos++;
-    console.log(this.besos);
-  }
   ngOnInit(): void {
   }
 

@@ -7,6 +7,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatListModule} from '@angular/material/list'; 
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 @NgModule({
     imports:[
         MatButtonModule,
@@ -16,7 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
         MatNativeDateModule,
         MatToolbarModule,
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatProgressSpinnerModule
     ],
     exports:[
         MatButtonModule,
@@ -26,7 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
         MatNativeDateModule,
         MatToolbarModule,
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatProgressSpinnerModule
     ]
 })
 export class MaterialModule{

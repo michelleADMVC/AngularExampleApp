@@ -1,12 +1,58 @@
 <mat-toolbar color= "primary">
     <div class="nav_title "> Admin</div>
     <div class="item_container">
-        <div class="nav_item ">
-            Cocteles
+        <div class="nav_item">
+            <div [ngSwitch]="mode">
+                <div *ngSwitchCase="'cocktail'">
+                    <button mat-button class ="disabled"
+                    [disabled] = "true"
+                    (click)="changeMode('cocktail')"> Cocteles</button>
+                </div>
+                <div *ngSwitchDefault>
+                    <button mat-button
+                    (click)="changeMode('cocktail')"> Cocteles</button>
+                </div>
+            </div>
         </div>
-        <div class="nav_item ">Ingredientes</div>
-        <div class="nav_item ">Herramientas</div>
-        <div class="nav_item ">Vasos</div>
+        <div class="nav_item">
+            <div [ngSwitch]="mode">
+                <div *ngSwitchCase="'ingredient'">
+                    <button mat-button class ="disabled"
+                    [disabled] = "true"
+                    (click)="changeMode('ingredient')">Ingredientes</button>
+                </div>
+                <div *ngSwitchDefault>
+                    <button mat-button
+                    (click)="changeMode('ingredient')">Ingredientes</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav_item">
+            <div [ngSwitch]="mode">
+                <div *ngSwitchCase="'tool'">
+                    <button mat-button class ="disabled"
+                    [disabled] = "true"
+                    (click)="changeMode('tool')">Herramientas</button>
+                </div>
+                <div *ngSwitchDefault>
+                    <button mat-button
+                    (click)="changeMode('tool')">Herramientas</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav_item">
+            <div [ngSwitch]="mode">
+                <div *ngSwitchCase="'glass'">
+                    <button mat-button class ="disabled"
+                    [disabled] = "true"
+                    (click)="changeMode('glass')">Vasos</button>
+                </div>
+                <div *ngSwitchDefault>
+                    <button mat-button
+                    (click)="changeMode('glass')">Vasos</button>
+                </div>
+            </div>
+        </div>
     </div>
     
 </mat-toolbar>
