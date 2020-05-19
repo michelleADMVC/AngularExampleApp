@@ -1,16 +1,15 @@
-<div class="container">
+<mat-card class="container">
     <mat-action-list>
         <app-search></app-search>
     </mat-action-list>
     <div class="list_container guide">
         <div class ="loading" *ngIf="empty">
-            <mat-spinner></mat-spinner>
+            <mat-spinner diameter ="75"></mat-spinner>
         </div>
         <div>
             <div>
                 <mat-action-list *ngFor="let item of items, let i = index">
-                    <button mat-list-item (click)="setVisorObject(i)"> <span>{{item.name_es}}</span> </button>
-                    
+                    <button mat-list-item (click)="setVisorObject(i)"> <span>{{item.name_es}}</span> </button>             
                 </mat-action-list>
             </div>
             <!-- <div *ngIf="builder">
@@ -34,5 +33,5 @@
         </div>
     </div>
    
-</div>
+</mat-card>
 

@@ -1,7 +1,6 @@
 <div class="container">
     Crear item : {{builder}}
     <div class="main">
-       
         <ng-template [ngIf]="!builder">
             <ng-template [ngIf]="empty">
                 <div>
@@ -9,77 +8,199 @@
                 </div>
             </ng-template>
             <ng-template  [ngIf]="!empty">
-                <div [ngSwitch]="mode">
-                     <div *ngSwitchCase="'cocktail'">
-                        {{mode}}
-                        <div class="name">
-                         {{globalObject.name_es}}
+                <div class="info_main">
+                    <div class = "mode">
+                        <div *ngIf= "mode=='cocktail'">
+                            <div>Coctel</div>
                         </div>
-                        <div class="id">
-                         {{globalObject._id}}
+                        <div *ngIf= "mode=='ingredient'">
+                            <div>Ingrediente</div>
                         </div>
-                        <div class="id">
-                         {{globalObject.type}}
+                        <div *ngIf= "mode=='tool'" >
+                            <div>Herramienta</div>
                         </div>
-                     </div>
-                    <div *ngSwitchCase="'ingredient'">
-                        {{mode}}
-                       <div class="name">
-                        {{globalObject.name_es}}
-                       </div>
-                       <div class="id">
-                        {{globalObject._id}}
-                       </div>
-                       <div class="id">
-                        {{globalObject.type}}
-                       </div>
+                        <div *ngIf= "mode=='glass'" >
+                            <div>Vaso</div>
+                        </div>
                     </div>
-                    <div *ngSwitchCase="'tool'">
-                        {{mode}}
-                        <div class="name">
-                         {{globalObject.name_es}}
-                        </div>
-                        <div class="id">
-                         {{globalObject._id}}
-                        </div>
-                        <div class="id">
-                         {{globalObject.type}}
-                        </div>
-                     </div>
-                     <div *ngSwitchCase="'glass'">
-                        {{mode}}
-                        <div class="name">
-                         {{globalObject.name_es}}
-                        </div>
-                        <div class="id">
-                         {{globalObject._id}}
-                        </div>
-                        <div class="id">
-                         {{globalObject.type}}
-                        </div>
-                     </div>
+                    <mat-card class="info_container">
+                        <mat-card-title>
+                            <div class="name">
+                                {{globalObject.name_es}}
+                            </div>
+                            <div class="id">
+                                ID: {{globalObject._id}}
+                            </div>
+                        </mat-card-title>
+                        <mat-divider></mat-divider>
+                        <mat-card-content class="info_section">
+                            <div class= "info_item">
+                                <div *ngIf= "mode=='ingredient'" class="color">
+                                    <div> Color : {{globalObject.color}}</div>
+                                    <div class="sample" [style.background-color]="globalObject.color"></div>
+                                </div>
+                                <div *ngIf= "mode=='ingredient'" class="color">
+                                    <div *ngIf= "globalObject.type=='liquid'" class="color">
+                                        Liquido
+                                    </div>
+                                    <div *ngIf= "globalObject.type=='solid'" class="color">
+                                        Solido
+                                    </div>
+                                </div>
+                                <div *ngIf= "mode=='glass'" class="color">
+                                    <div>Capacidad : {{globalObject.capacity}} ml</div>
+                                </div>
+                            </div>
+                            
+                            <div class= "info_description">
+                               
+                            
+                                <div>
+                                <p>Descripcion español</p>
+                                <p>{{globalObject.description_es}}</p>
+                                <p>Descripcion ingles</p>
+                                <p>{{globalObject.description_en}}</p>
+                                </div>
+                                
+                            </div>
+                        </mat-card-content>
+                        <mat-divider></mat-divider> 
+                        <mat-card-actions>
+                            <button mat-button color="warn" (click)= "acceptDelete()">Delete</button>
+                            <button mat-button [disabled]>Nothing here</button>
+                          </mat-card-actions>
+                    </mat-card>
                 </div>
+               
             </ng-template>
         </ng-template>
         <ng-template [ngIf]="builder">
             <ng-template  [ngIf]="empty">
-                <div [ngSwitch]="mode">
-                     <div *ngSwitchCase="'cocktail'">
-                        {{mode}}
-                     </div>
-                    <div *ngSwitchCase="'ingredient'">
-                        {{mode}}
-                     
-                    </div>
-                    <div *ngSwitchCase="'tool'">
-                        {{mode}}
-                       
-                     </div>
-                     <div *ngSwitchCase="'glass'">
-                        {{mode}}
-                       
-                     </div>
-                </div>
+                <mat-card class="builder_container">
+                    <mat-card-title class= "name">
+                        <div *ngIf= "mode=='cocktail'">
+                            <div>Nuevo coctel</div>
+                        </div>
+                        <div *ngIf= "mode=='ingredient'">
+                            <div>Nuevo ingrediente</div>
+                        </div>
+                        <div *ngIf= "mode=='tool'">
+                            <div>Nueva herramienta</div>
+                        </div>
+                        <div *ngIf= "mode=='glass'">
+                            <div>Nuevo vaso</div>
+                        </div>
+                        
+                    </mat-card-title>
+                    <mat-divider></mat-divider> 
+                    <mat-card-content class="new_item">
+                        <mat-horizontal-stepper [linear]="true" #stepper>
+                            <mat-step>
+                                <ng-template matStepLabel>Nombres</ng-template>
+                                <mat-divider></mat-divider> 
+                                <form [formGroup]="nameFormGroup" class ="step">
+                                    <div class= "new_item_name">
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Nombre Español</mat-label> 
+                                                <input matInput placeholder="Mojito" 
+                                                formControlName="name_es"
+                                                value="" >
+                                                </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Nombre Ingles</mat-label> 
+                                                <input matInput placeholder="Mojito" 
+                                                formControlName="name_en"
+                                                value="">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <button mat-button matStepperNext type="button">
+                                        Siguiente
+                                    </button> 
+                                </div>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template  matStepLabel>Propiedades</ng-template>
+                                <mat-divider></mat-divider> 
+                                <div *ngIf= "mode=='ingredient'">
+                                    <form class ="step" [formGroup] ="ingredientPropertiesFormGroup" action="">
+                                        <div class = "color_picker_section">
+                                            <input #ignoredInput
+                                            [style.background]="newItemColor"
+                                            [cpIgnoredElements]="[ignoredButton, ignoredInput]"
+                                            [(cpToggle)]="toggle"
+                                            [(colorPicker)]="newItemColor"
+                                            [disabled]="true"
+                                            id= "color_picker"/>
+                                            {{newItemColor}}
+                                            <button id= "color_picker_button"mat-button #ignoredButton type="button" (click)="toggle=!toggle">Cambiar color</button>
+                                        </div>
+                                        <div class= "new_item_solid_toggle">
+                                            <mat-slide-toggle formControlName="solid" class="example-margin">
+                                                Ingrediente solido
+                                            </mat-slide-toggle>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    <button mat-button matStepperPrevious type="button">Atras</button>
+                                    <button mat-button matStepperNext type="button">Siguiente</button>
+                                </div>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Descripciones</ng-template>
+                                <mat-divider></mat-divider> 
+                                <form [formGroup]= "descFormGroup" class ="step" action="">
+                                    <div class="new_item_description">
+                                        <div class="new_item_description_container">
+                                            <mat-form-field class="">
+                                                <mat-label>Descripcion Espanol</mat-label>
+                                                <textarea matInput placeholder="Ex. It makes me feel..."
+                                                formControlName="description_es"
+                                                value=""></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="new_item_description_container">
+                                            <mat-form-field class="">
+                                                <mat-label>Descripcion Ingles</mat-label>
+                                                <textarea matInput placeholder="Ex. It makes me feel..."
+                                                formControlName="description_en"
+                                                value=""></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <button mat-button type="button" matStepperPrevious>Atras</button>
+                                    <button mat-button type="button" color= "accent"(click)="stepper.reset(); newItem($event)">Anadir</button>
+                                </div>
+                            </mat-step>
+                                
+                          </mat-horizontal-stepper>
+                        <!-- <form class="new_item_form guide">
+                            
+                            <div class="description_section">
+                                <mat-card>
+                                <div>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Leave a comment</mat-label>
+                                        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </mat-card>
+                            </div>
+                            
+                          </form> -->
+                          <!-- <mat-card-actions>
+                            <button mat-button color="accent" (click)= "acceptDelete()">Anadir</button>
+                          </mat-card-actions> -->
+                    </mat-card-content>
+                </mat-card>
             </ng-template>
         </ng-template>
     </div>

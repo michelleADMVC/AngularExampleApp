@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Estas por eliminar : {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Estas seguro?</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="aceptar()">Aceptar</button>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+</div>

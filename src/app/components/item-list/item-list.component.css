@@ -7,7 +7,7 @@
     
 }
 .container{
-    border: 1px rgb(85, 85, 85) solid;
+
     height: 100%;
     width: 100%;
     display: flex;
@@ -21,12 +21,13 @@
     top: 0;
   }
 .loading{
+    margin-top : 50%;
     display: flex;
     justify-content: center;
+   
 }
 
 .full{
-
     width: 100%;
 }
 .add_section{
