@@ -5,6 +5,7 @@
             <ng-template [ngIf]="empty">
                 <div>
                     <h1>Vacio</h1>
+                    <p>Inserte un objeto</p>
                 </div>
             </ng-template>
             <ng-template  [ngIf]="!empty">
@@ -76,131 +77,126 @@
         </ng-template>
         <ng-template [ngIf]="builder">
             <ng-template  [ngIf]="empty">
-                <mat-card class="builder_container">
-                    <mat-card-title class= "name">
-                        <div *ngIf= "mode=='cocktail'">
-                            <div>Nuevo coctel</div>
-                        </div>
-                        <div *ngIf= "mode=='ingredient'">
-                            <div>Nuevo ingrediente</div>
-                        </div>
-                        <div *ngIf= "mode=='tool'">
-                            <div>Nueva herramienta</div>
-                        </div>
-                        <div *ngIf= "mode=='glass'">
-                            <div>Nuevo vaso</div>
-                        </div>
-                        
-                    </mat-card-title>
-                    <mat-divider></mat-divider> 
-                    <mat-card-content class="new_item">
-                        <mat-horizontal-stepper [linear]="true" #stepper>
-                            <mat-step>
-                                <ng-template matStepLabel>Nombres</ng-template>
-                                <mat-divider></mat-divider> 
-                                <form [formGroup]="nameFormGroup" class ="step">
-                                    <div class= "new_item_name">
-                                        <div>
-                                            <mat-form-field>
-                                                <mat-label>Nombre Español</mat-label> 
-                                                <input matInput placeholder="Mojito" 
-                                                formControlName="name_es"
-                                                value="" >
-                                                </mat-form-field>
-                                        </div>
-                                        <div>
-                                            <mat-form-field>
-                                                <mat-label>Nombre Ingles</mat-label> 
-                                                <input matInput placeholder="Mojito" 
-                                                formControlName="name_en"
-                                                value="">
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div>
-                                    <button mat-button matStepperNext type="button">
-                                        Siguiente
-                                    </button> 
-                                </div>
-                            </mat-step>
-                            <mat-step>
-                                <ng-template  matStepLabel>Propiedades</ng-template>
-                                <mat-divider></mat-divider> 
-                                <div *ngIf= "mode=='ingredient'">
-                                    <form class ="step" [formGroup] ="ingredientPropertiesFormGroup" action="">
-                                        <div class = "color_picker_section">
-                                            <input #ignoredInput
-                                            [style.background]="newItemColor"
-                                            [cpIgnoredElements]="[ignoredButton, ignoredInput]"
-                                            [(cpToggle)]="toggle"
-                                            [(colorPicker)]="newItemColor"
-                                            [disabled]="true"
-                                            id= "color_picker"/>
-                                            {{newItemColor}}
-                                            <button id= "color_picker_button"mat-button #ignoredButton type="button" (click)="toggle=!toggle">Cambiar color</button>
-                                        </div>
-                                        <div class= "new_item_solid_toggle">
-                                            <mat-slide-toggle formControlName="solid" class="example-margin">
-                                                Ingrediente solido
-                                            </mat-slide-toggle>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div>
-                                    <button mat-button matStepperPrevious type="button">Atras</button>
-                                    <button mat-button matStepperNext type="button">Siguiente</button>
-                                </div>
-                            </mat-step>
-                            <mat-step>
-                                <ng-template matStepLabel>Descripciones</ng-template>
-                                <mat-divider></mat-divider> 
-                                <form [formGroup]= "descFormGroup" class ="step" action="">
-                                    <div class="new_item_description">
-                                        <div class="new_item_description_container">
-                                            <mat-form-field class="">
-                                                <mat-label>Descripcion Espanol</mat-label>
-                                                <textarea matInput placeholder="Ex. It makes me feel..."
-                                                formControlName="description_es"
-                                                value=""></textarea>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="new_item_description_container">
-                                            <mat-form-field class="">
-                                                <mat-label>Descripcion Ingles</mat-label>
-                                                <textarea matInput placeholder="Ex. It makes me feel..."
-                                                formControlName="description_en"
-                                                value=""></textarea>
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div>
-                                    <button mat-button type="button" matStepperPrevious>Atras</button>
-                                    <button mat-button type="button" color= "accent"(click)="stepper.reset(); newItem($event)">Anadir</button>
-                                </div>
-                            </mat-step>
-                                
-                          </mat-horizontal-stepper>
-                        <!-- <form class="new_item_form guide">
-                            
-                            <div class="description_section">
-                                <mat-card>
-                                <div>
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Leave a comment</mat-label>
-                                        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                                    </mat-form-field>
-                                </div>
-                            </mat-card>
+                <div *ngIf= "mode== 'ingredient'">
+                    <mat-card class="builder_container">
+                        <mat-card-title class= "name">
+                            <div *ngIf= "mode=='cocktail'">
+                                <div>Nuevo coctel</div>
+                            </div>
+                            <div *ngIf= "mode=='ingredient'">
+                                <div>Nuevo ingrediente</div>
+                            </div>
+                            <div *ngIf= "mode=='tool'">
+                                <div>Nueva herramienta</div>
+                            </div>
+                            <div *ngIf= "mode=='glass'">
+                                <div>Nuevo vaso</div>
                             </div>
                             
-                          </form> -->
-                          <!-- <mat-card-actions>
-                            <button mat-button color="accent" (click)= "acceptDelete()">Anadir</button>
-                          </mat-card-actions> -->
-                    </mat-card-content>
-                </mat-card>
+                        </mat-card-title>
+                        <mat-divider></mat-divider> 
+                        <mat-card-content class="new_item">
+                            <mat-horizontal-stepper [linear]="true" #stepper>
+                                <mat-step>
+                                    <ng-template matStepLabel>Nombres</ng-template>
+                                    <mat-divider></mat-divider> 
+                                    <form [formGroup]="nameFormGroup" class ="step">
+                                        <div class= "new_item_name">
+                                            <div>
+                                                <mat-form-field>
+                                                    <mat-label>Nombre Español</mat-label> 
+                                                    <input matInput placeholder="Mojito" 
+                                                    formControlName="name_es"
+                                                    value="" >
+                                                    </mat-form-field>
+                                            </div>
+                                            <div>
+                                                <mat-form-field>
+                                                    <mat-label>Nombre Ingles</mat-label> 
+                                                    <input matInput placeholder="Mojito" 
+                                                    formControlName="name_en"
+                                                    value="">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <button mat-button matStepperNext type="button">
+                                            Siguiente
+                                        </button> 
+                                    </div>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template  matStepLabel>Propiedades</ng-template>
+                                    <mat-divider></mat-divider> 
+                                    <div *ngIf= "mode=='ingredient'">
+                                        <form class ="step" [formGroup] ="ingredientPropertiesFormGroup" action="">
+                                            <div class = "color_picker_section">
+                                                <input #ignoredInput
+                                                [style.background]="newItemColor"
+                                                [cpIgnoredElements]="[ignoredButton, ignoredInput]"
+                                                [(cpToggle)]="toggle"
+                                                [(colorPicker)]="newItemColor"
+                                                [disabled]="true"
+                                                id= "color_picker"/>
+                                                {{newItemColor}}
+                                                <button id= "color_picker_button"mat-button #ignoredButton type="button" (click)="toggle=!toggle">Cambiar color</button>
+                                            </div>
+                                            <div class= "new_item_solid_toggle">
+                                                <mat-slide-toggle formControlName="solid" class="example-margin">
+                                                    Ingrediente solido
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <button mat-button matStepperPrevious type="button">Atras</button>
+                                        <button mat-button matStepperNext type="button">Siguiente</button>
+                                    </div>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Descripciones</ng-template>
+                                    <mat-divider></mat-divider> 
+                                    <form [formGroup]= "descFormGroup" class ="step" action="">
+                                        <div class="new_item_description">
+                                            <div class="new_item_description_container">
+                                                <mat-form-field class="">
+                                                    <mat-label>Descripcion Espanol</mat-label>
+                                                    <textarea matInput placeholder="Ex. It makes me feel..."
+                                                    formControlName="description_es"
+                                                    value=""></textarea>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="new_item_description_container">
+                                                <mat-form-field class="">
+                                                    <mat-label>Descripcion Ingles</mat-label>
+                                                    <textarea matInput placeholder="Ex. It makes me feel..."
+                                                    formControlName="description_en"
+                                                    value=""></textarea>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <button mat-button type="button" matStepperPrevious>Atras</button>
+                                        <button mat-button type="button" color= "accent"(click)="stepper.reset(); newItem($event)">Anadir</button>
+                                    </div>
+                                </mat-step>
+                                    
+                              </mat-horizontal-stepper>
+                            
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div *ngIf= "mode== 'cocktail'">
+                    <h2>Not Available</h2>
+                </div>
+                <div *ngIf= "mode== 'tool'">
+                    <h2>Not Available</h2>
+                </div>
+                <div *ngIf= "mode== 'glass'">
+                    <h2>Not Available</h2>
+                </div>
             </ng-template>
         </ng-template>
     </div>

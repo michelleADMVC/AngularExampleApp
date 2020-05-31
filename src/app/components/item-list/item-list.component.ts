@@ -28,6 +28,10 @@ export class ItemListComponent implements OnInit,DoCheck {
       this.cleanList();
       this.loadItems();
     }
+    if(this._controller.getUpdateVar()){
+      this.loadItems();
+      this._controller.resetUpdateVar();
+    }
   }
   cleanList(){
     this.empty = true;

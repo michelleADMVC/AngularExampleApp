@@ -15,8 +15,6 @@ export class DeleteDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
     ){
-      console.log(`Datos desde modal : ${data.id}`);
-      console.log(`Datos desde modal : ${data.name}`);
     }
 
   aceptar(): void {
